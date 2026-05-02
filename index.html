@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brosky | The High-Signal Utility Network for Ambitious Men</title>
+    <meta name="description" content="Join Brosky, the exclusive location-based voice platform and network built for ambitious men. Connect through Huddles, find brothers nearby, and join the elite Brohood.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brosky.app/">
+    <meta property="og:title" content="Brosky | High-Signal Utility Network">
+    <meta property="og:description" content="The digital corner store for global brotherhood. Connect, match, and huddle with ambitious men nearby.">
+    <meta property="og:image" content="assets/images/brosky_logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo_teal.png" alt="Brosky Logo" id="nav-logo">
+                <span>BROSKY</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">The Code</a>
+                <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <span class="badge">COMING SOON</span>
+                <h1>The digital corner store for <span class="text-gradient">Ambitious Men.</span></h1>
+                <p>Brosky is a high-signal utility network. Match with brothers nearby, join real-time voice Huddles, and coordinate with a community built on trust and action.</p>
+                <div class="cta-group">
+                    <a href="#waitlist" class="btn btn-xl btn-primary">Join the Waitlist</a>
+                </div>
+                <div class="download-badges">
+                    <a href="#" class="store-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                    </a>
+                    <a href="#" class="store-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-overlay"></div>
+    </header>
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Designed for the <span class="text-teal">Modern Man.</span></h2>
+                <p>A high-performance interface that stays out of your way. Fast, fluid, and focused.</p>
+            </div>
+            <div class="raw-screenshots">
+                <img src="screenshot4.png" alt="Brosky Sign In">
+                <img src="screenshot1.png" alt="Brosky Sign Up">
+            </div>
+        </div>
+    </section>
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for <span class="text-teal">Action.</span></h2>
+                <p>Modern networking is broken. We fixed it with high-utility features designed for real connection.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i data-lucide="map-pin"></i></div>
+                    <h3>The Radar</h3>
+                    <p>Find Bros nearby in real-time. See who's active and ready to huddle within your immediate radius.</p>
+                </div>
+                <div class="feature-card active-card">
+                    <div class="icon-box"><i data-lucide="mic"></i></div>
+                    <h3>Voice Huddles</h3>
+                    <p>Drop into live audio rooms. No profiles, no follower counts—just high-signal conversations about strategy, gains, and hustle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i data-lucide="zap"></i></div>
+                    <h3>The Feed</h3>
+                    <p>A fast, ephemeral stream of updates from your network. Strategy, Gains, and Lifestyle insights shared by the Brohood.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i data-lucide="message-square"></i></div>
+                    <h3>Direct Signal</h3>
+                    <p>End-to-end coordinated messaging. No noise, no spam—just direct communication with verified men.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="mission">
+        <div class="container">
+            <div class="mission-vertical">
+                <div class="mission-screenshots">
+                    <img src="screenshot2.png" alt="Radar">
+                    <img src="screenshot3.png" alt="Messages">
+                    <img src="screenshot5.png" alt="Feed">
+                </div>
+                <div class="mission-content">
+                    <h2>The <span class="text-teal">Brohood Code.</span></h2>
+                    <p>Brosky isn't just an app; it's a commitment. Click to reveal the pillars of the Brohood.</p>
+                    <div class="interactive-code">
+                        <div class="code-card" onclick="this.classList.toggle('active')">
+                            <div class="code-header">
+                                <h3>High Signal</h3>
+                                <span class="plus">+</span>
+                            </div>
+                            <div class="code-body">
+                                <p>No fluff, no status-chasing. We focus on strategy, gains, and actionable intelligence. If it doesn't provide value, it doesn't belong on Brosky.</p>
+                            </div>
+                        </div>
+                        <div class="code-card" onclick="this.classList.toggle('active')">
+                            <div class="code-header">
+                                <h3>Community Policing</h3>
+                                <span class="plus">+</span>
+                            </div>
+                            <div class="code-body">
+                                <p>The Brohood protects its own. Every member is a moderator. We report noise and enforce the code of conduct to maintain the highest standard of network quality.</p>
+                            </div>
+                        </div>
+                        <div class="code-card" onclick="this.classList.toggle('active')">
+                            <div class="code-header">
+                                <h3>Radical Transparency</h3>
+                                <span class="plus">+</span>
+                            </div>
+                            <div class="code-body">
+                                <p>Real photos, real men, real connections. We operate on the Honor System. Authenticity is our primary currency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Voices from the <span class="text-teal">Brohood.</span></h2>
+            </div>
+            <div class="carousel-container">
+                <div class="avatar-strip">
+                    <div class="avatar-item active" data-quote="Finally, a place for high-signal conversation without the noise of traditional social media. The Radar feature is a game-changer for networking while traveling." data-author="David S." data-title="Real Estate Developer">
+                        <img src="user1.png" alt="David S.">
+                    </div>
+                    <div class="avatar-item" data-quote="The Honor System actually works. You're talking to real men who are actually doing the work. No bots, no fluff, just brothers." data-author="Marcus K." data-title="Tech Founder">
+                        <img src="https://ui-avatars.com/api/?name=Marcus+K&background=14B8A6&color=fff" alt="Marcus K.">
+                    </div>
+                    <div class="avatar-item" data-quote="Brosky isn't just an app; it's a utility. I've found better business partners here in a week than I did on LinkedIn in a year." data-author="Alex R." data-title="Logistics Director">
+                        <img src="https://ui-avatars.com/api/?name=Alex+R&background=4F46E5&color=fff" alt="Alex R.">
+                    </div>
+                    <div class="avatar-item" data-quote="The transparency is what sold me. Real photos, real names, and a code of conduct that people actually follow. It's the future of networking." data-author="Jordan M." data-title="Architecture Lead">
+                        <img src="https://ui-avatars.com/api/?name=Jordan+M&background=1E293B&color=fff" alt="Jordan M.">
+                    </div>
+                </div>
+                <div class="quote-box">
+                    <p id="display-quote">Finally, a place for high-signal conversation without the noise of traditional social media. The Radar feature is a game-changer for networking while traveling.</p>
+                    <div class="quote-author">
+                        <span id="display-author">David S.</span>
+                        <span id="display-title">Real Estate Developer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked <span class="text-teal">Questions.</span></h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">How does the Honor System work?</div>
+                    <div class="faq-answer">Brosky relies on community verification. Every member agrees to the code of conduct. If a member is reported and verified to be in violation, they are permanently removed from the network.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is my location data private?</div>
+                    <div class="faq-answer">Yes. We only show your approximate proximity (e.g., "within 2km") to other verified brothers. Your exact coordinates are never shared or stored longer than necessary for the Radar to function.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Who is Brosky for?</div>
+                    <div class="faq-answer">Brosky is built for ambitious men who value time, privacy, and high-utility connections. It's for the builders, the earners, and the brothers who want to coordinate in the real world.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="waitlist" class="waitlist">
+        <div class="container">
+            <div class="waitlist-card">
+                <h2>Secure your <span class="text-teal">Handle.</span></h2>
+                <p>We're launching the Private Beta soon. Joining the waitlist gives you priority access to claim your unique @username before the public launch.</p>
+                <form id="waitlist-form" class="form-group">
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Join the Brohood</button>
+                </form>
+                <div id="form-message" class="hidden"></div>
+                <p class="form-note">Private Beta invites go out soon.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="logo_teal.png" alt="Brosky Logo" id="footer-logo" style="height: 32px; width: 32px; margin-right: 10px;">
+                        <span>BROSKY</span>
+                    </div>
+                    <p>High-signal utility network for the modern man.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-col">
+                        <h4>Platform</h4>
+                        <a href="#features">Features</a>
+                        <a href="#about">The Code</a>
+                        <a href="#waitlist">Waitlist</a>
+                    </div>
+                    <div class="link-col">
+                        <h4>Connect</h4>
+                        <a href="#">X (Twitter)</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Brosky Network. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem; letter-spacing: 1px;">POWERED BY <span style="color: var(--primary); font-weight: 800;">PACE TECH</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
