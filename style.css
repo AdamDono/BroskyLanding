@@ -11,6 +11,7 @@
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --z-index-progress: 1100;
 }
 
 * {
@@ -144,6 +145,18 @@ h1, h2, h3 {
 
 .nav-links a:hover {
     color: var(--primary);
+}
+
+/* Scroll Progress Bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), #2DD4BF);
+    z-index: var(--z-index-progress);
+    transition: width 0.1s ease;
 }
 
 /* Hero Section */
@@ -576,7 +589,27 @@ h1, h2, h3 {
 
 .waitlist h2 {
     font-size: 3.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.waitlist-count {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(20, 184, 166, 0.1);
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    color: var(--primary);
+    border-radius: 9999px;
+    font-size: 0.85rem !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem !important;
+    animation: countPulse 2s infinite ease-in-out;
+}
+
+@keyframes countPulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.03); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
 }
 
 .waitlist p {
@@ -753,4 +786,81 @@ footer {
         width: 100%;
     }
     .form-group .btn { width: 100%; }
+}
+
+/* Custom Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 32px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.hidden .modal-card {
+    transform: translateY(20px);
+}
+
+.modal-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(20, 184, 166, 0.1);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+}
+
+.modal-icon i {
+    width: 32px;
+    height: 32px;
+}
+
+.modal-card h3 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.modal-card p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.modal-card .btn {
+    width: 100%;
+}
+
+.modal-icon.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
 }

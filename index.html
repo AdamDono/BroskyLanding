@@ -25,6 +25,7 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
+    <div id="scroll-progress"></div>
     <nav id="navbar">
         <div class="container">
             <div class="logo">
@@ -200,16 +201,28 @@
         <div class="container">
             <div class="waitlist-card">
                 <h2>Secure your <span class="text-teal">Handle.</span></h2>
+                <p id="waitlist-count" class="waitlist-count">Syncing the Brohood...</p>
                 <p>We're launching the Private Beta soon. Joining the waitlist gives you priority access to claim your unique @username before the public launch.</p>
                 <form id="waitlist-form" class="form-group">
                     <input type="email" id="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Join the Brohood</button>
                 </form>
-                <div id="form-message" class="hidden"></div>
                 <p class="form-note">Private Beta invites go out soon.</p>
             </div>
         </div>
     </section>
+
+    <!-- Custom Modal -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div id="modal-icon" class="modal-icon">
+                <i data-lucide="check-circle"></i>
+            </div>
+            <h3 id="modal-title">Welcome to the Brohood.</h3>
+            <p id="modal-message">We've registered your email. Check your inbox for the Private Beta invite soon.</p>
+            <button id="close-modal" class="btn btn-primary">Got it, Bro</button>
+        </div>
+    </div>
     <footer>
         <div class="container">
             <div class="footer-grid">

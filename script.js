@@ -40,25 +40,71 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 if (error) throw error;
 
-                // Success
-                waitlistForm.classList.add('hidden');
-                formMessage.classList.remove('hidden');
-                formMessage.innerHTML = `
-                    <div class="success-message">
-                        <h3 style="color: #14B8A6; font-size: 1.5rem; margin-bottom: 0.5rem;">Welcome to the Brohood.</h3>
-                        <p>We've registered <strong>${email}</strong>. Check your inbox for the Private Beta invite soon.</p>
-                    </div>
-                `;
+                // Success Modal
+                showModal(
+                    'check-circle',
+                    'Welcome to the Brohood.',
+                    `We've registered <strong>${email}</strong>. Check your inbox for the Private Beta invite soon.`
+                );
                 
+                waitlistForm.reset();
                 localStorage.setItem('brosky_waitlist_joined', 'true');
+                updateWaitlistCount(); // Update the counter immediately
             } catch (error) {
                 console.error('Waitlist error:', error);
-                submitBtn.innerText = 'Error - Try Again';
+                
+                if (error.code === '23505') {
+                    showModal(
+                        'user-check',
+                        'Already Enlisted.',
+                        `The email <strong>${email}</strong> is already in the queue, Bro. We'll be in touch soon.`
+                    );
+                } else {
+                    showModal(
+                        'alert-circle',
+                        'System Glitch.',
+                        'Something went wrong on our end. Please try again in a moment.',
+                        true
+                    );
+                }
+            } finally {
+                submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
-                alert(error.message || 'Something went wrong. Please try again.');
             }
         });
     }
+
+    // --- Modal Logic ---
+    const modal = document.getElementById('custom-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const modalIconContainer = document.getElementById('modal-icon');
+    const closeModalBtn = document.getElementById('close-modal');
+
+    function showModal(iconName, title, message, isError = false) {
+        modalTitle.innerText = title;
+        modalMessage.innerHTML = message;
+        
+        // Update icon
+        modalIconContainer.innerHTML = `<i data-lucide="${iconName}"></i>`;
+        if (isError) {
+            modalIconContainer.classList.add('error');
+        } else {
+            modalIconContainer.classList.remove('error');
+        }
+        
+        lucide.createIcons();
+        modal.classList.remove('hidden');
+    }
+
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
 
     // --- Scroll Reveal Animations ---
     const observerOptions = {
@@ -159,4 +205,35 @@ document.addEventListener('DOMContentLoaded', async () => {
             }, 300);
         });
     });
+    // --- Scroll Progress Bar ---
+    const progressBar = document.getElementById('scroll-progress');
+    
+    window.addEventListener('scroll', () => {
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop;
+        const width = (scrollTop / height) * 100;
+        progressBar.style.width = width + '%';
+    });
+
+    // --- Live Waitlist Count ---
+    const waitlistCountEl = document.getElementById('waitlist-count');
+    
+    async function updateWaitlistCount() {
+        try {
+            const { count, error } = await _supabase
+                .from('waitlist')
+                .select('*', { count: 'exact', head: true });
+
+            if (error) throw error;
+            
+            const displayCount = count || 0; 
+            waitlistCountEl.innerText = `${displayCount.toLocaleString()} BROTHERS IN THE QUEUE`;
+        } catch (err) {
+            console.error('Error fetching waitlist count:', err);
+            waitlistCountEl.innerText = 'JOINING 1,200+ BROTHERS IN THE QUEUE...';
+        }
+    }
+
+    updateWaitlistCount();
+    setInterval(updateWaitlistCount, 30000);
 });
