@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
             
-            // Update the UI
-            const displayCount = count || 0; 
+            // Update the UI with a small offset of 50
+            const displayCount = (count || 0) + 50; 
             waitlistCountEl.innerText = `${displayCount.toLocaleString()} BROTHERS IN THE QUEUE`;
             
             // Log for debugging
