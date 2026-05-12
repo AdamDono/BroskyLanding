@@ -220,20 +220,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     async function updateWaitlistCount() {
         try {
+            // Using a simple select with count: 'exact'
             const { count, error } = await _supabase
                 .from('waitlist')
-                .select('*', { count: 'exact', head: true });
+                .select('id', { count: 'exact', head: true });
 
-            if (error) throw error;
+            if (error) {
+                console.warn('Supabase RLS or Query Error:', error.message);
+                return;
+            }
             
+            // Update the UI
             const displayCount = count || 0; 
             waitlistCountEl.innerText = `${displayCount.toLocaleString()} BROTHERS IN THE QUEUE`;
+            
+            // Log for debugging
+            console.log(`Brohood Sync: ${displayCount} members found.`);
         } catch (err) {
-            console.error('Error fetching waitlist count:', err);
-            waitlistCountEl.innerText = 'JOINING 1,200+ BROTHERS IN THE QUEUE...';
+            console.error('Connection error:', err);
         }
     }
 
+    // Initial fetch
     updateWaitlistCount();
-    setInterval(updateWaitlistCount, 30000);
+
+    // --- REAL-TIME SUBSCRIPTION ---
+    // This listens for any new 'INSERT' events in the waitlist table 
+    // and updates the counter instantly for everyone on the site.
+    const waitlistSubscription = _supabase
+        .channel('public:waitlist')
+        .on('postgres_changes', 
+            { event: 'INSERT', schema: 'public', table: 'waitlist' }, 
+            (payload) => {
+                console.log('New Brother enlisted! Updating count...');
+                updateWaitlistCount();
+            }
+        )
+        .subscribe();
+
+    // Also fallback to a 60s poll just in case of socket disconnects
+    setInterval(updateWaitlistCount, 60000);
 });
