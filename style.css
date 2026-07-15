@@ -828,6 +828,7 @@ footer {
     .nav-links { display: none; }
     .cta-group { flex-direction: column; gap: 1rem; width: 100%; }
     .btn-xl { width: 100%; text-align: center; }
+    .btn-android { justify-content: center; }
 
     /* Showcase Images Mobile */
     .raw-screenshots { 
