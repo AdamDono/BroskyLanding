@@ -23,6 +23,113 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <style>
+
+        /* ── HOW IT WORKS ── */
+        .how-it-works {
+            padding: 6rem 0;
+            background: #F8FAFC;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #E2E8F0;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(20,184,166,0.12);
+        }
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #14B8A6, #2DD4BF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.2rem;
+        }
+        .step-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 0.6rem;
+        }
+        .step-card p {
+            font-size: 0.9rem;
+            color: #64748B;
+            line-height: 1.6;
+        }
+        .step-connector {
+            display: none;
+        }
+
+        /* ── ANDROID DOWNLOAD BTN ── */
+        .btn-android {
+            background: #0F172A;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-android:hover {
+            background: #1E293B;
+            transform: translateY(-2px);
+            color: white;
+        }
+        .btn-android svg {
+            width: 18px;
+            height: 18px;
+        }
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── BETA BADGE ── */
+        .badge-beta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(20,184,166,0.12);
+            border: 1px solid rgba(20,184,166,0.4);
+            color: #14B8A6;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+        .badge-beta .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background: #14B8A6;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+    </style>
 </head>
 <body>
     <div id="scroll-progress"></div>
@@ -33,33 +140,47 @@
                 <span>BROSKY</span>
             </div>
             <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
                 <a href="#features">Features</a>
                 <a href="#about">The Code</a>
                 <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
             </div>
         </div>
     </nav>
+
+    <!-- HERO -->
     <header class="hero">
         <div class="container">
             <div class="hero-content fade-in">
-                <span class="badge">COMING SOON</span>
+                <div class="badge-beta">
+                    <span class="pulse-dot"></span>
+                    NOW IN BETA
+                </div>
                 <h1>The digital corner store for <span class="text-gradient">Ambitious Men.</span></h1>
                 <p>Brosky is a high-signal utility network. Match with brothers nearby, join real-time voice Huddles, and coordinate with a community built on trust and action.</p>
                 <div class="cta-group">
                     <a href="#waitlist" class="btn btn-xl btn-primary">Join the Waitlist</a>
+                    <a href="https://drive.google.com/file/d/1WooAorZ4uNvBv59hzaRhGB_z3vej0ETO/view?usp=drive_link" class="btn btn-xl btn-android" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341l1.01-1.748a.5.5 0 0 0-.866-.5l-1.025 1.774A6.474 6.474 0 0 0 14 14.5H10c-.9 0-1.75.182-2.53.5L6.457 13.226a.5.5 0 0 0-.866.5l.998 1.728A6.5 6.5 0 0 0 3 21h18a6.5 6.5 0 0 0-3.477-5.659zM9 19.5a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zm6 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zm-8.5-10.79L5.29 6.534a.5.5 0 0 1 .866-.5l1.237 2.14A9.96 9.96 0 0 1 12 7.5c1.79 0 3.463.47 4.906 1.294l1.238-2.14a.5.5 0 0 1 .866.5l-1.213 2.099A9.97 9.97 0 0 1 22 17.5H2a9.97 9.97 0 0 1 4.5-8.79z"/></svg>
+                        Download for Android
+                    </a>
                 </div>
                 <div class="download-badges">
-                    <a href="#" class="store-btn">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                    <a href="#" class="store-btn" title="iOS App Store – Coming Soon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store – Coming Soon">
                     </a>
-                    <a href="#" class="store-btn">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+                    <a href="#" class="store-btn" title="Google Play – Coming Soon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store – Coming Soon">
                     </a>
                 </div>
             </div>
         </div>
         <div class="hero-bg-overlay"></div>
     </header>
+
+
+
+    <!-- SHOWCASE -->
     <section id="showcase" class="showcase">
         <div class="container">
             <div class="section-header">
@@ -72,6 +193,40 @@
             </div>
         </div>
     </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Up and running in <span class="text-teal">60 seconds.</span></h2>
+                <p>No complicated setup. No lengthy profiles. Just download, sign in, and connect.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Download & Sign In</h3>
+                    <p>Download the app and sign in with Google, Apple, or email. Takes under a minute.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Pick Your Vibes</h3>
+                    <p>Select your interests: Business, Sports, Tech, Fitness, and more to tune your feed and radar to high-signal content.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Find Your Radius</h3>
+                    <p>Set your discovery radius from 5km to Global. The Radar shows Bros who are active and online right now.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Connect & Coordinate</h3>
+                    <p>DM, voice note, or drop into a live Huddle. Build real connections with real men doing real things.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
@@ -87,7 +242,7 @@
                 <div class="feature-card active-card">
                     <div class="icon-box"><i data-lucide="mic"></i></div>
                     <h3>Voice Huddles</h3>
-                    <p>Drop into live audio rooms. No profiles, no follower counts: just high-signal conversations about strategy, gains, and hustle.</p>
+                    <p>Drop into live audio rooms. No profiles, no follower counts. Just high-signal conversations about strategy, gains, and hustle.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon-box"><i data-lucide="zap"></i></div>
@@ -97,11 +252,23 @@
                 <div class="feature-card">
                     <div class="icon-box"><i data-lucide="message-square"></i></div>
                     <h3>Direct Signal</h3>
-                    <p>End-to-end coordinated messaging. No noise, no spam: just direct communication with verified men.</p>
+                    <p>Real-time DMs with voice notes, read receipts, and typing indicators. No noise, no spam. Just direct, clear communication.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i data-lucide="bell"></i></div>
+                    <h3>Push Notifications</h3>
+                    <p>Stay in the loop even when the app is closed. Native push alerts fire the moment a Bro messages or reacts, powered by Firebase.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i data-lucide="shield-check"></i></div>
+                    <h3>Block & Report</h3>
+                    <p>Full bidirectional block enforcement. Block a Bro and they vanish from your Feed, Radar, and Messages instantly and permanently.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- MISSION / THE CODE -->
     <section id="about" class="mission">
         <div class="container">
             <div class="mission-vertical">
@@ -141,11 +308,22 @@
                                 <p>Real photos, real men, real connections. We operate on the Honor System. Authenticity is our primary currency.</p>
                             </div>
                         </div>
+                        <div class="code-card" onclick="this.classList.toggle('active')">
+                            <div class="code-header">
+                                <h3>Safety First</h3>
+                                <span class="plus">+</span>
+                            </div>
+                            <div class="code-body">
+                                <p>Robust block and report tools are built into every screen. Violators are removed. Your safety and privacy are non-negotiable.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header">
@@ -162,7 +340,7 @@
                     <div class="avatar-item" data-quote="Brosky isn't just an app; it's a utility. I've found better business partners here in a week than I did on LinkedIn in a year." data-author="Alex R." data-title="Logistics Director">
                         <img src="https://ui-avatars.com/api/?name=Alex+R&background=4F46E5&color=fff" alt="Alex R.">
                     </div>
-                    <div class="avatar-item" data-quote="The transparency is what sold me. Real photos, real names, and a code of conduct that people actually follow. It's the future of networking." data-author="Jordan M." data-title="Architecture Lead">
+                    <div class="avatar-item" data-quote="The push notifications keep me connected even when the app is closed. I haven't missed a message from my squad since day one." data-author="Jordan M." data-title="Architecture Lead">
                         <img src="https://ui-avatars.com/api/?name=Jordan+M&background=1E293B&color=fff" alt="Jordan M.">
                     </div>
                 </div>
@@ -176,6 +354,8 @@
             </div>
         </div>
     </section>
+
+    <!-- FAQ -->
     <section id="faq" class="faq">
         <div class="container">
             <div class="section-header">
@@ -194,20 +374,34 @@
                     <div class="faq-question">Who is Brosky for?</div>
                     <div class="faq-answer">Brosky is built for ambitious men who value time, privacy, and high-utility connections. It's for the builders, the earners, and the brothers who want to coordinate in the real world.</div>
                 </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will I get notifications when the app is closed?</div>
+                    <div class="faq-answer">Yes. Brosky uses Firebase Cloud Messaging (FCM) to deliver native push notifications to your Android or iOS device even when the app is completely closed. You'll never miss a message from your Brohood.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What happens if I block someone?</div>
+                    <div class="faq-answer">Blocking is immediate and bidirectional. Once you block a Bro, they instantly disappear from your Feed, Radar discovery list, and Messages inbox. You will no longer receive any communications from them.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is there a free plan?</div>
+                    <div class="faq-answer">Yes. The core Brosky experience is free. Feed, Radar, Huddles, and Direct Messaging are all included. A Bro Premium tier with expanded features and no limits is coming soon.</div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- WAITLIST -->
     <section id="waitlist" class="waitlist">
         <div class="container">
             <div class="waitlist-card">
                 <h2>Secure your <span class="text-teal">Handle.</span></h2>
                 <p id="waitlist-count" class="waitlist-count">Syncing the Brohood...</p>
-                <p>We're launching the Private Beta soon. Joining the waitlist gives you priority access to claim your unique @username before the public launch.</p>
+                <p>We're in Private Beta now. Joining the waitlist gives you priority access to claim your unique @username before the public launch.</p>
                 <form id="waitlist-form" class="form-group">
                     <input type="email" id="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Join the Brohood</button>
                 </form>
-                <p class="form-note">Private Beta invites go out soon.</p>
+                <p class="form-note">Android Beta APK available now. iOS coming soon.</p>
             </div>
         </div>
     </section>
@@ -223,6 +417,7 @@
             <button id="close-modal" class="btn btn-primary">Got it, Bro</button>
         </div>
     </div>
+
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -236,15 +431,16 @@
                 <div class="footer-links">
                     <div class="link-col">
                         <h4>Platform</h4>
+                        <a href="#how-it-works">How It Works</a>
                         <a href="#features">Features</a>
                         <a href="#about">The Code</a>
                         <a href="#waitlist">Waitlist</a>
                     </div>
                     <div class="link-col">
                         <h4>Connect</h4>
-                        <a href="#">X (Twitter)</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Support</a>
+                        <a href="https://x.com/Adam_Dono_" target="_blank">X (Twitter)</a>
+                        <a href="https://www.linkedin.com/in/adam-dono-85b766242/" target="_blank">LinkedIn</a>
+                        <a href="#waitlist">Support</a>
                     </div>
                 </div>
             </div>
@@ -254,6 +450,7 @@
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
     <script>
         lucide.createIcons();
